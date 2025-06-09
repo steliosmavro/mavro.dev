@@ -1,13 +1,5 @@
-import { notFound } from 'next/navigation';
 import { getPostMeta } from '@/lib/getBlogPosts';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import SampleBlogPost from '@/content/blog/sample-blog-post.mdx';
-import RenderMdx from '@/components/RenderMdx';
-
-const POST_COMPONENTS: Record<string, React.ComponentType> = {
-  'sample-blog-post': SampleBlogPost,
-};
 
 export async function generateMetadata({
   params,
