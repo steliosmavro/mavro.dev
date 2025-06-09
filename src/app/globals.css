@@ -1,0 +1,108 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  @apply font-sans text-slate-900 antialiased;
+  background: linear-gradient(
+    to bottom,
+    #f8fafc 0%,
+    /* faded whitish */ #f8fafc 30%,
+    /* faded whitish extended further down */ #42b7ff20 40%,
+    /* faded bluish */ rgba(39, 32, 255, 0.096) 70% /* very subtle purplish */,
+    rgba(77, 1, 255, 0.071) 90%
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold tracking-tight;
+}
+
+.nav-link {
+  @apply decoration-accent decoration-2 underline-offset-4 transition-colors duration-150 hover:underline;
+}
+
+code,
+pre {
+  @apply rounded bg-slate-100 px-1 font-mono text-sm dark:bg-slate-800;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #232336;
+}
+
+.btn {
+  @apply transform rounded-md bg-gradient-to-r from-brand to-accent px-5 py-2 font-semibold uppercase tracking-wide text-white shadow-sm transition-transform duration-100 hover:scale-105 hover:shadow-md focus-visible:ring-2 focus-visible:ring-brand;
+}
+.btn-outline {
+  @apply rounded-md border border-brand bg-transparent px-5 py-2 font-semibold uppercase tracking-wide text-brand ring-1 ring-inset ring-slate-200 transition hover:border-accent hover:text-accent focus-visible:ring-2 focus-visible:ring-accent;
+}
+.card-glass {
+  @apply rounded-xl border border-slate-200 bg-surface p-6 shadow-sm transition hover:scale-[1.01] hover:border-accent hover:shadow-md;
+}
+.tag-chip {
+  @apply rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 transition;
+}
+.tag-chip-brand {
+  @apply bg-brand/10 text-brand;
+}
+.tag-chip-accent {
+  @apply bg-accent/10 text-accent;
+}
+.divider-accent {
+  @apply mx-auto my-8 h-1 w-16 rounded-full bg-accent;
+}
+
+/* Footer cleanup */
+footer {
+  @apply mt-16 border-t border-slate-200 pt-6 text-center text-xs text-slate-500;
+}
+footer a {
+  @apply transition-colors hover:text-brand;
+}
+
+/* Prep for dark mode, but don't enable by default */
+.dark body {
+  @apply bg-[#101014] text-slate-100;
+}
+
+.nav-logo {
+  text-decoration: none !important;
+}
+.nav-logo:hover,
+.nav-logo:focus {
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.test-something {
+  transition: all 300ms;
+}
+.test-something:hover {
+  transform: rotate(-4deg);
+}
+
+.layout-container {
+  @apply mx-auto w-full max-w-7xl sm:px-8 md:px-16;
+}

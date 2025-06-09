@@ -1,0 +1,126 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 🔧 Developer Instructions for `mavro.dev`
+
+## 📌 Project Overview
+
+You're helping Stelios Mavro build and maintain [`mavro.dev`](mdc:https:/mavro.dev) — a **resume-grade**, developer-facing portfolio and blog site.
+
+This project is public-facing and represents professional work. Every decision (code, structure, tooling) should reflect **modern standards**, **clean design**, and **production-readiness**.
+
+---
+
+## 🎯 Site Goals
+
+- Act as a portfolio hub (projects, blog, GitHub, contact)
+- Establish credibility with employers and freelance clients
+- Showcase production-quality full-stack engineering work
+- Drive inbound leads via blog content and clean presentation
+
+---
+
+## 🛠 Tech Stack
+
+- **Next.js 14+** with App Router
+- **Tailwind CSS** (customized theme, typography plugin)
+- **MDX** for blog content (static files with frontmatter)
+- **Vercel** for deployment
+- Optional: **Supabase** + **Prisma** for contact/auth storage only if needed
+
+---
+
+## 📦 Architecture & Code Quality
+
+- ✅ Use a **feature-based folder structure**  
+  Group routes, components, and logic by domain (e.g., `/blog`, `/projects`, `/contact`)
+
+  ```
+  src/
+    app/
+      blog/
+        [slug]/page.tsx
+        page.tsx
+      contact/page.tsx
+      projects/page.tsx
+    components/
+      shared/
+    content/
+      blog/
+  ```
+
+- ✅ Follow **modern architectural patterns**
+  - Keep shared logic modular
+  - Extract UI elements into reusable components
+  - Use layout components sparingly and purposefully
+
+- ✅ Use **strict TypeScript**, ESLint, Prettier
+- ✅ Avoid third-party packages unless no native or official solution exists
+- ✅ Apply changes directly in the right file
+- ✅ Use native Next.js features for MDX and routing whenever possible
+
+---
+
+## 🧠 MDX + Blog Routing Guidelines
+
+- Blog posts live in `/content/blog/*.mdx`
+- Use `frontmatter` with at least:
+  ```md
+  ---
+  title: How I Built a Telegram Bot on Solana
+  date: 2025-06-01
+  tags: [solana, ai, bots]
+  slug: telegram-bot-solana
+  ---
+  ```
+- If `slug` is missing, auto-generate from title:
+  - Lowercase
+  - Replace spaces + special characters (`'"/&`) with `-`
+  - Strip or encode unsafe characters
+  - Prevent duplicates via suffix (e.g., `slug-2`)
+
+---
+
+## 💄 Design & Styling
+
+- Use Tailwind CSS utility classes — no raw CSS unless justified
+- Theme colors:
+  - `brand`: `#6366F1` (Indigo-500)
+  - `highlight`: `#22D3EE` (Cyan-400)
+- Use Tailwind’s `@tailwindcss/typography` for MDX rendering (`prose` class)
+- Font stack:
+  - Sans: Geist, Inter, IBM Plex Sans
+  - Mono: Geist Mono, IBM Plex Mono
+
+---
+
+## ⚙️ Optional Features (Post-MVP)
+
+- Blog tag filtering (e.g., `#AI`, `#DevTools`)
+- Dark mode toggle
+- Contact form (if DB needed, use Supabase)
+- Search index via static indexing (not Algolia for now)
+
+---
+
+## 💼 Project Scope Philosophy
+
+This project should:
+- Launch fast and iterate
+- Favor clear code over clever hacks
+- Prioritize **credibility and maintainability**
+- Look polished enough to put on a resume and share on Twitter/LinkedIn
+
+---
+
+## 🤝 How You Should Work
+
+- Act like a **pair programmer**
+- Run commands and apply changes, not just suggest
+- Show code diffs for refactors
+- Alert if something is:
+  - Messy
+  - Redundant
+  - Not idiomatic for Next.js 14, Tailwind, or MDX
